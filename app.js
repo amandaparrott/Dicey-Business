@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     let newDieButton = document.getElementById("newDie");
-    let reRollButton = document.getElementById("reroll");
+    let reRollButton = document.getElementById("reRoll");
     let dieSumButton = document.getElementById("dieSum");
     let diceContainer = document.getElementById("diceContainer");
     let squareValue = 0;
@@ -36,9 +36,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-    //   reRollButton.addEventListener("click", function () {
-    //     document.getElementsByClassName('die').roll();
-    //   });
+    reRollButton.addEventListener("click", reRoll);
+    
 
     newDieButton.addEventListener("click", makeDie);
     dieSumButton.addEventListener('click', sumDice);
@@ -48,6 +47,12 @@ document.addEventListener("DOMContentLoaded", function () {
         diceArray.push(dice);
         console.log(diceArray);
     };
+
+    function reRoll () {
+        for (let i = 0; i < diceArray.length; i++) {
+            diceArray[i].roll();
+        }
+    }
 
     function sumDice() {
         let sum = 0;
