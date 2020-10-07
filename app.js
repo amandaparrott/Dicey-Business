@@ -9,29 +9,31 @@ document.addEventListener("DOMContentLoaded", function () {
     let diceArray = [];
 
     class Die {
-        constructor() {
+        constructor(value) {
+            this.value = value;
             this.div = document.createElement("div");
             this.div.addEventListener('click', () => this.roll());
             this.div.addEventListener('dblclick', () => this.deleteDie());
-            this.value = document.createTextNode(squareValue);
             this.div.className = "die";
             this.div.id = squareValue;
-            this.div.innerText = getRandomValue(1, 7);
+            this.div.innerText = this.value;
             diceContainer.appendChild(this.div);
             this.div.style.color = "black";
-           // console.log(this);
-           
-           
+            // console.log(this);
+
+
         }
         roll() {
-             this.value = getRandomValue(1, 7);
-             this.div.innerText = this.value;
+            this.value = getRandomValue(1, 7);
+            this.div.innerText = this.value;
         }
 
         deleteDie() {
             this.div.remove();
+            let index = diceArray.indexOf(this);
+            diceArray.splice(index, 1);
         }
-        
+
     }
 
     //   reRollButton.addEventListener("click", function () {
@@ -39,19 +41,24 @@ document.addEventListener("DOMContentLoaded", function () {
     //   });
 
     newDieButton.addEventListener("click", makeDie);
-dieSumButton.addEventListener('click', sumDice);
+    dieSumButton.addEventListener('click', sumDice);
 
     function makeDie() {
-        let dice = new Die();
+        let dice = new Die(getRandomValue(1, 7));
         diceArray.push(dice);
         console.log(diceArray);
     };
 
     function sumDice() {
-
+        let sum = 0;
+        for (let i = 0; i < diceArray.length; i++) {
+            sum += diceArray[i].value;
+        }
+        
+        alert(`Total: ${sum}`);
     };
 
-    
+
 
     // event listener (
     // // let newdie = new Die(math.random.... )
