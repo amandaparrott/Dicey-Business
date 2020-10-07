@@ -1,0 +1,16 @@
+
+.die {
+    display: inline-block;
+    background-color: whitesmoke;
+    height: 100px;
+    width: 100px; 
+    color: black;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 50px;
+    padding: 4px;
+    border: black;
+    border-style: solid;
+    border-radius: 5px;
+    margin: 5px;
+}
